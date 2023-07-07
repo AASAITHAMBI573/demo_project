@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo-cont1
+        image: aasaithambi5/demoimage:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  demo-service
+spec:
+  selector:
+    app: demo
+  type: LoadBalancer
+  ports:
+  - name: demo_port
+    port:  80
+    targetPort: 8080
+...
+  
+
+
