@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: loadbalancer-svc
+  name: demo-svc
 spec:
   type: LoadBalancer
   selector:
-    app: hello
+    app: demo
   ports:
     - name: http
       protocol: TCP
@@ -14,18 +14,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loadbalancer-pod
+  name: demo-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: hello
+      app: demo
   template:
     metadata:
       labels:
-        app: hello 
+        app: demo 
     spec:
       containers:
-        - name: hello
+        - name: demo
           image: aasaithambi5/demoimages:latest
           imagePullPolicy: Always
