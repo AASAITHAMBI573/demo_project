@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: demo-cont1
-        image: aasaithambi5/demoimage:latest
+        image: aasaithambi5/demoimages:latest
         ports:
         - containerPort: 8080
 ---
